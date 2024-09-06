@@ -10,6 +10,7 @@
 ?>
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -32,13 +33,15 @@
         <h1>Emilie Forteroche</h1>
     </header>
 
-    <main>    
+    <main>
         <?= $content /* Ici est affiché le contenu réel de la page. */ ?>
     </main>
-    
+
     <footer>
-        <p>Copyright © Emilie Forteroche 2023 - Openclassrooms - <a href="index.php?action=admin">Admin</a>
+        <p>Copyright © Emilie Forteroche 2023 - Openclassrooms - <a href="index.php?action=admin">Admin</a> - <a
+                href="index.php?action=monitoring">Monitoring </a>
     </footer>
 
 </body>
+
 </html>

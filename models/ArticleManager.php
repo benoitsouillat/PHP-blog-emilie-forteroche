@@ -101,4 +101,14 @@ class ArticleManager extends AbstractEntityManager
             'id' => $article->getId()
         ]);
     }
+
+    public function getNumberComments(Article $article): int
+    {
+        $sql = "SELECT id FROM comment WHERE id_article = :id_article";
+        $result = $this->db->query($sql, [
+            'id_article' => $article->getId()
+        ]);
+        $data = $result->fetchAll();
+        return count($data);
+    }
 }

@@ -313,8 +313,16 @@ a.info {
     color: white;
 }
 
+.monitoringArticle {
+    text-wrap: nowrap;
+    table-layout: fixed;
+}
+
 .articleLine {
     display: flex; 
+}
+.monitoringLine {
+    height: 30px;
 }
 
 .articleLine div {
@@ -334,6 +342,26 @@ a.info {
 .articleLine .vues {
     flex-grow: 1;
     text-wrap: nowrap;
+    margin-top: unset;
+}
+.monitoringArticle thead {
+    height: 30px;
+}
+.monitoringArticle tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.monitoringArticle tbody tr:nth-child(odd) {
+    background-color: var(--headerPaleColor);
+}
+.monitoringLine .title {
+    padding-left: 10px;
+    width: 60%;
+}
+.monitoringLine .vues, .monitoringLine .comments {
+    text-wrap: nowrap;
+    margin-top: unset;
+    min-width: 120px;
+    text-align: center;
 }
 
 .articleLine > div {
