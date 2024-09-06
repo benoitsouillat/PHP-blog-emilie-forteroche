@@ -328,8 +328,12 @@ a.info {
     width: 200px;
 }
 
-.articleLine .content {
+.articleLine .content  {
     flex-grow: 1;
+}
+.articleLine .vues {
+    flex-grow: 1;
+    text-wrap: nowrap;
 }
 
 .articleLine > div {
