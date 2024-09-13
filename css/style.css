@@ -283,6 +283,13 @@ a.info {
     margin: 5px 0 5px 0;
 }
 
+.detailComment .deleteComment svg {
+    stroke: #9eadeb;
+    position: relative;
+    top: -20px;
+    left: -55px;
+}
+
 /* Page d'erreur */
 
 .error {
