@@ -43,12 +43,7 @@ class AdminController
             $orderBy = 'number_comments';
             $orderSort = $_GET['comments'];
         }
-
-        if ($orderBy == 'title' && $orderSort == 'ASC') {
-            $articles = $articleManager->getAllArticles();
-        } else {
-            $articles = $articleManager->getAllArticlesSorted(htmlspecialchars($orderBy), htmlspecialchars($orderSort));
-        }
+        $articles = $articleManager->getAllArticlesSorted(htmlspecialchars($orderBy), htmlspecialchars($orderSort));
 
         $articlesData = [];
         foreach ($articles as $article) {
@@ -195,8 +190,6 @@ class AdminController
         // On redirige vers la page d'administration.
         Utils::redirect("admin");
     }
-
-
     /**
      * Suppression d'un article.
      * @return void
@@ -212,6 +205,15 @@ class AdminController
         $articleManager->deleteArticle($id);
 
         // On redirige vers la page d'administration.
+        Utils::redirect("admin");
+    }
+    public function deleteComment(): void
+    {
+        $this->checkIfUserIsConnected();
+
+        $id = Utils::request("id", -1);
+        $commentManager = new CommentManager();
+        $commentManager->deleteComment($id);
         Utils::redirect("admin");
     }
 }

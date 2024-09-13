@@ -38,7 +38,7 @@ $commentsSort = !empty($_GET['comments']) ? $_GET['comments'] : 'ASC';
             </th>
             <th>
                 <p>Commentaires<a
-                        href='index.php?action=monitoring&comments=<?= $commentsSort  == 'ASC' ? 'DESC' : 'ASC'; ?>'>
+                        href='index.php?action=monitoring&comments=<?= $commentsSort == 'ASC' ? 'DESC' : 'ASC'; ?>'>
                         <?= $commentsSort == 'ASC' ?
                             '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
                         <polyline points="2,6 5,3 8,6" fill="none" stroke="black" stroke-width="2"/></svg>'
@@ -54,11 +54,11 @@ $commentsSort = !empty($_GET['comments']) ? $_GET['comments'] : 'ASC';
         <?php foreach ($articlesData as $articleData) {
             $article = $articleData['article'];
         ?>
-            <tr class="monitoringLine">
-                <td class="title"><?= $article->getTitle() ?></td>
-                <td class="vues"><?= $article->getNumberVues() ?> vue(s)</td>
-                <td class="comments"><?= $articleData['numberOfComments'] ?> commentaire(s)</td>
-            </tr>
+        <tr class="monitoringLine">
+            <td class="title"><?= $article->getTitle() ?></td>
+            <td class="vues"><?= $article->getNumberVues() ?> vue(s)</td>
+            <td class="comments"><?= $articleData['numberOfComments'] ?> commentaire(s)</td>
+        </tr>
         <?php } ?>
     </tbody>
 </table>

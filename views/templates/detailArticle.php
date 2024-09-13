@@ -1,8 +1,9 @@
 <?php
-    /**
-     * Ce template affiche un article et ses commentaires.
-     * Il affiche également un formulaire pour ajouter un commentaire.
-     */
+
+/**
+ * Ce template affiche un article et ses commentaires.
+ * Il affiche également un formulaire pour ajouter un commentaire.
+ */
 ?>
 
 <article class="mainArticle">
@@ -20,22 +21,32 @@
 
 <div class="comments">
     <h2 class="commentsTitle">Vos Commentaires</h2>
-    <?php 
-        if (empty($comments)) {
-            echo '<p class="info">Aucun commentaire pour cet article.</p>';
-        } else {
-            echo '<ul>';
-            foreach ($comments as $comment) {
-                echo '<li>';
-                echo '  <div class="smiley">☻</div>';
-                echo '  <div class="detailComment">';
-                echo '      <h3 class="info">Le ' . Utils::convertDateToFrenchFormat($comment->getDateCreation()) . ", " . Utils::format($comment->getPseudo()) . ' a écrit :</h3>';
-                echo '      <p class="content">' . Utils::format($comment->getContent()) . '</p>';
-                echo '  </div>';
-                echo '</li>';
-            }               
-            echo '</ul>';
-        } 
+    <?php
+    if (empty($comments)) {
+        echo '<p class="info">Aucun commentaire pour cet article.</p>';
+    } else {
+        echo '<ul>';
+        foreach ($comments as $comment) {
+            echo '<li>';
+            echo '  <div class="smiley">☻</div>';
+            echo '  <div class="detailComment">';
+            echo '      <h3 class="info">Le ' . Utils::convertDateToFrenchFormat($comment->getDateCreation()) . ", " . Utils::format($comment->getPseudo()) . ' a écrit :</h3>';
+            echo '      <p class="content">' . Utils::format($comment->getContent()) . '</p>';
+            if (isset($_SESSION['user'])) {
+                echo '      <a href="?action=deleteComment&id='  . $comment->getId() . '" ' . Utils::askConfirmation('Êtes-vous sûr de vouloir supprimer ce commentaire ?') . ' ><svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2">
+                            <polyline points="3 6 5 6 21 6"></polyline>
+                            <path d="M19 6l-2 14H7L5 6"></path>
+                            <path d="M10 11v6"></path>
+                            <path d="M14 11v6"></path>
+                            <path d="M1 3h22"></path>
+                            </svg>
+                        </a>';
+            }
+            echo '  </div>';
+            echo '</li>';
+        }
+        echo '</ul>';
+    }
     ?>
 
     <form action="index.php" method="post" class="foldedCorner">
