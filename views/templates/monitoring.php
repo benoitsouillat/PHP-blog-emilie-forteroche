@@ -4,8 +4,8 @@
 * Affichage détaillé d'un article (nombre de vues, nombre de commentaire, date de publication)
 */
 $titleSort = !empty($_GET['title']) ? $_GET['title'] : 'ASC';
-$vuesSort = 'ASC';
-$commentsSort = 'ASC';
+$vuesSort = !empty($_GET['vues']) ? $_GET['vues'] : 'ASC';
+$commentsSort = !empty($_GET['comments']) ? $_GET['comments'] : 'ASC';
 ?>
 
 <h2>Monitoring des articles</h2>
@@ -14,11 +14,40 @@ $commentsSort = 'ASC';
     <thead>
         <tr>
             <th>
-                <p>Titre de l'article</p><a
-                    href='index.php?action=monitoring&title=<?= $titleSort == 'ASC' ? 'DESC' : 'ASC'; ?>'>TRI</a>
+                <p>Titre de l'article<a
+                        href='index.php?action=monitoring&title=<?= $titleSort == 'ASC' ? 'DESC' : 'ASC'; ?>'>
+                        <?= $titleSort == 'ASC' ?
+                            '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                        <polyline points="2,6 5,3 8,6" fill="none" stroke="black" stroke-width="2"/></svg>'
+                            :
+                            '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                        <polyline points="2,4 5,7 8,4" fill="none" stroke="black" stroke-width="2"/></svg>'
+                        ?></a>
+                </p>
             </th>
-            <th>Vues </th>
-            <th>Commentaires </th>
+            <th>
+                <p>Vues<a href='index.php?action=monitoring&vues=<?= $vuesSort == 'ASC' ? 'DESC' : 'ASC'; ?>'>
+                        <?= $vuesSort == 'ASC' ?
+                            '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                        <polyline points="2,6 5,3 8,6" fill="none" stroke="black" stroke-width="2"/></svg>'
+                            :
+                            '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                        <polyline points="2,4 5,7 8,4" fill="none" stroke="black" stroke-width="2"/></svg>'
+                        ?></a>
+                </p>
+            </th>
+            <th>
+                <p>Commentaires<a
+                        href='index.php?action=monitoring&comments=<?= $commentsSort  == 'ASC' ? 'DESC' : 'ASC'; ?>'>
+                        <?= $commentsSort == 'ASC' ?
+                            '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                        <polyline points="2,6 5,3 8,6" fill="none" stroke="black" stroke-width="2"/></svg>'
+                            :
+                            '<svg xmlns="http://www.w3.org/2000/svg" width="12" height="12" viewBox="0 0 12 12">
+                        <polyline points="2,4 5,7 8,4" fill="none" stroke="black" stroke-width="2"/></svg>'
+                        ?></a>
+                </p>
+            </th>
         </tr>
     </thead>
     <tbody>

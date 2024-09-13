@@ -31,7 +31,25 @@ class AdminController
     {
         $this->checkIfUserIsConnected();
         $articleManager = new ArticleManager();
-        $articles = $articleManager->getAllArticles();
+        $orderBy = 'title';
+        $orderSort = 'ASC';
+        if (!empty($_GET['title'])) {
+            $orderBy = 'title';
+            $orderSort = $_GET['title'];
+        } elseif (!empty($_GET['vues'])) {
+            $orderBy = 'numberVues';
+            $orderSort = $_GET['vues'];
+        } elseif (!empty($_GET['comments'])) {
+            $orderBy = 'number_comments';
+            $orderSort = $_GET['comments'];
+        }
+
+        if ($orderBy == 'title' && $orderSort == 'ASC') {
+            $articles = $articleManager->getAllArticles();
+        } else {
+            $articles = $articleManager->getAllArticlesSorted(htmlspecialchars($orderBy), htmlspecialchars($orderSort));
+        }
+
         $articlesData = [];
         foreach ($articles as $article) {
             $articlesData[$article->getId()] = [
