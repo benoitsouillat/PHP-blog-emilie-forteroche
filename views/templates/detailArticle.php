@@ -14,7 +14,7 @@
     <div class="footer">
         <span class="info"> Publié le <?= Utils::convertDateToFrenchFormat($article->getDateCreation()) ?></span>
         <?php if ($article->getDateUpdate() != null) { ?>
-        <span class="info"> Modifié le <?= Utils::convertDateToFrenchFormat($article->getDateUpdate()) ?></span>
+            <span class="info"> Modifié le <?= Utils::convertDateToFrenchFormat($article->getDateUpdate()) ?></span>
         <?php } ?>
     </div>
 </article>
@@ -33,16 +33,14 @@
             echo '      <h3 class="info">Le ' . Utils::convertDateToFrenchFormat($comment->getDateCreation()) . ", " . Utils::format($comment->getPseudo()) . ' a écrit :</h3>';
             echo '      <p class="content">' . Utils::format($comment->getContent()) . '</p>';
             if (isset($_SESSION['user'])) {
-                echo '      <a class="deleteComment" href="?action=deleteComment&id='  . $comment->getId() . '" ' . Utils::askConfirmation('Êtes-vous sûr de vouloir supprimer ce commentaire ?') . ' >
-                            <svg xmlns="http://www.w3.org/2000/svg" width="50" height="50" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2">
+                echo '      <a class="deleteComment" title="Supprimer" href="?action=deleteComment&id='  . $comment->getId() . '" ' . Utils::askConfirmation('Êtes-vous sûr de vouloir supprimer ce commentaire ?') . ' >
+                            <svg xmlns="http://www.w3.org/2000/svg" width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="feather feather-trash-2">
                             <polyline points="3 6 5 6 21 6"></polyline>
                             <path d="M19 6l-2 14H7L5 6"></path>
                             <path d="M10 11v6"></path>
                             <path d="M14 11v6"></path>
                             <path d="M1 3h22"></path>
                             </svg>
-
-
                         </a>';
             }
             echo '  </div>';

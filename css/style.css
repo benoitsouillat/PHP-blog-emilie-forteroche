@@ -284,10 +284,10 @@ a.info {
 }
 
 .detailComment .deleteComment svg {
-    stroke: #9eadeb;
+    stroke: #f13c1f;
     position: relative;
     top: -20px;
-    left: -55px;
+    left: -47px;
 }
 
 /* Page d'erreur */
@@ -364,11 +364,14 @@ a.info {
     padding-left: 10px;
     width: 60%;
 }
-.monitoringLine .vues, .monitoringLine .comments {
+.monitoringLine .vues, .monitoringLine .comments, .monitoringLine .date {
     text-wrap: nowrap;
     margin-top: unset;
     min-width: 120px;
     text-align: center;
+}
+.monitoringLine .comments, .monitoringLine .date {
+    min-width: 180px;
 }
 
 .articleLine > div {

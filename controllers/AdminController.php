@@ -42,6 +42,9 @@ class AdminController
         } elseif (!empty($_GET['comments'])) {
             $orderBy = 'number_comments';
             $orderSort = $_GET['comments'];
+        } elseif (!empty($_GET['date'])) {
+            $orderBy = 'date_creation';
+            $orderSort = $_GET['date'];
         }
         $articles = $articleManager->getAllArticlesSorted(htmlspecialchars($orderBy), htmlspecialchars($orderSort));
 
