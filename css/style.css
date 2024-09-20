@@ -347,6 +347,7 @@ a.info {
     flex-grow: 1;
 }
 .articleLine .vues {
+    min-width: 110px;
     flex-grow: 1;
     text-wrap: nowrap;
     margin-top: unset;
