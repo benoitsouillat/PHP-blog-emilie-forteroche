@@ -48,16 +48,9 @@ class AdminController
         }
         $articles = $articleManager->getAllArticlesSorted(htmlspecialchars($orderBy), htmlspecialchars($orderSort));
 
-        $articlesData = [];
-        foreach ($articles as $article) {
-            $articlesData[$article->getId()] = [
-                'article' => $article,
-                'numberOfComments' => $articleManager->getNumberComments($article)
-            ];
-        }
         $view = new View("Monitoring");
         $view->render("monitoring", [
-            'articlesData' => $articlesData
+            'articlesData' => $articles
         ]);
     }
 

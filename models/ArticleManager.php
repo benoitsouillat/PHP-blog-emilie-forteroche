@@ -22,7 +22,6 @@ class ArticleManager extends AbstractEntityManager
     }
     public function getAllArticlesSorted($orderBy, $orderSort): array
     {
-        // Risque d'injection SQL
         $sql = "SELECT a.*, COUNT(c.id) as number_comments 
                 FROM article a
                 LEFT JOIN comment c ON a.id = c.id_article
