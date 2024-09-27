@@ -20,21 +20,6 @@ class ArticleManager extends AbstractEntityManager
         }
         return $articles;
     }
-    public function getAllArticlesSorted($orderBy, $orderSort): array
-    {
-        $sql = "SELECT a.*, COUNT(c.id) as number_comments 
-                FROM article a
-                LEFT JOIN comment c ON a.id = c.id_article
-                GROUP BY a.id
-                ORDER BY $orderBy $orderSort";
-        $result = $this->db->query($sql);
-        $articles = [];
-
-        while ($article = $result->fetch()) {
-            $articles[] = new Article($article);
-        }
-        return $articles;
-    }
 
     /**
      * Récupère un article par son id.

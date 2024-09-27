@@ -46,7 +46,7 @@ class AdminController
             $orderBy = 'date_creation';
             $orderSort = $_GET['date'];
         }
-        $articles = $articleManager->getAllArticlesSorted(htmlspecialchars($orderBy), htmlspecialchars($orderSort));
+        $articles = $articleManager->getAllArticles();
 
         $view = new View("Monitoring");
         $view->render("monitoring", [
