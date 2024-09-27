@@ -101,14 +101,49 @@ class ArticleManager extends AbstractEntityManager
             'id' => $article->getId()
         ]);
     }
-
-    public function getNumberComments(Article $article): int
+    public function getNumberComments(Article $article): void
     {
         $sql = "SELECT COUNT(id) as number_of_comments FROM comment WHERE id_article = :id_article";
         $result = $this->db->query($sql, [
             'id_article' => $article->getId()
         ]);
         $data = $result->fetch();
-        return $data['number_of_comments'];
+        $article->setNumberComments($data['number_of_comments']);
+    }
+
+    public static function articleTitleASC($a, $b)
+    {
+        return $a->getTitle() <=> $b->getTitle();
+    }
+    public static function articleTitleDESC($a, $b)
+    {
+        return $b->getTitle() <=> $a->getTitle();
+    }
+
+    public static function articleVuesASC($a, $b)
+    {
+        return $a->getNumberVues() <=> $b->getNumberVues();
+    }
+    public static function articleVuesDESC($a, $b)
+    {
+        return $b->getNumberVues() <=> $a->getNumberVues();
+    }
+
+    public static function articleNumberCommentsASC($a, $b)
+    {
+        return $a->getNumberComments() <=> $b->getNumberComments();
+    }
+    public static function articleNumberCommentsDESC($a, $b)
+    {
+        return $b->getNumberComments() <=> $a->getNumberComments();
+    }
+
+    public static function articleDateASC($a, $b)
+    {
+        return $a->getDateCreation() <=> $b->getDateCreation();
+    }
+    public static function articleDateDESC($a, $b)
+    {
+        return $b->getDateCreation() <=> $a->getDateCreation();
     }
 }

@@ -31,26 +31,41 @@ class AdminController
     {
         $this->checkIfUserIsConnected();
         $articleManager = new ArticleManager();
-        $orderBy = 'title';
+        $articles = $articleManager->getAllArticles();
         $orderSort = 'ASC';
         if (!empty($_GET['title'])) {
-            $orderBy = 'title';
             $orderSort = $_GET['title'];
+            if ($orderSort === 'ASC') {
+                usort($articles, [ArticleManager::class, "articleTitleASC"]);
+            } else {
+                usort($articles, [ArticleManager::class, "articleTitleDESC"]);
+            };
         } elseif (!empty($_GET['vues'])) {
-            $orderBy = 'numberVues';
             $orderSort = $_GET['vues'];
+            if ($orderSort === 'ASC') {
+                usort($articles, [ArticleManager::class, "articleVuesASC"]);
+            } else {
+                usort($articles, [ArticleManager::class, "articleVuesDESC"]);
+            };
         } elseif (!empty($_GET['comments'])) {
-            $orderBy = 'number_comments';
             $orderSort = $_GET['comments'];
+            if ($orderSort === 'ASC') {
+                usort($articles, [ArticleManager::class, "articleNumberCommentsASC"]);
+            } else {
+                usort($articles, [ArticleManager::class, "articleNumberCommentsDESC"]);
+            };
         } elseif (!empty($_GET['date'])) {
-            $orderBy = 'date_creation';
             $orderSort = $_GET['date'];
+            if ($orderSort === 'ASC') {
+                usort($articles, [ArticleManager::class, "articleDateASC"]);
+            } else {
+                usort($articles, [ArticleManager::class, "articleDateDESC"]);
+            };
         }
-        $articles = $articleManager->getAllArticles();
 
         $view = new View("Monitoring");
         $view->render("monitoring", [
-            'articlesData' => $articles
+            'articles' => $articles
         ]);
     }
 

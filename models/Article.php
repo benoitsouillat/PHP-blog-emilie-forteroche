@@ -155,6 +155,8 @@ class Article extends AbstractEntity
      */
     public function getNumberComments()
     {
+        $articleManager = new ArticleManager();
+        $articleManager->getNumberComments($this);
         return $this->numberComments;
     }
 
