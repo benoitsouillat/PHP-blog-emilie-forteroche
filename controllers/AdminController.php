@@ -214,8 +214,8 @@ class AdminController
     {
         $this->checkIfUserIsConnected();
 
-        $id = Utils::request("id", -2);
-        $articleId = Utils::request("articleId", -1);
+        $id = Utils::request("id", null);
+        $articleId = Utils::request("articleId");
         $commentManager = new CommentManager();
         $commentManager->deleteComment($id);
         Utils::redirect("showArticle&id=" . $articleId);

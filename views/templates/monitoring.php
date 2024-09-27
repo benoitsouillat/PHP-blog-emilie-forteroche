@@ -62,17 +62,22 @@ $dateSort = !empty($_GET['date']) ? $_GET['date'] : 'ASC';
                 </p>
             </th>
         </tr>
+        <tr>
+            <th>
+                <p>Titre de l'article</p>
+            </th>
+        </tr>
     </thead>
     <tbody>
         <?php foreach ($articlesData as $articleData) {
             $article = $articleData['article'];
         ?>
-            <tr class="monitoringLine">
-                <td class="title"><?= $article->getTitle() ?></td>
-                <td class="vues"><?= $article->getNumberVues() ?> vue(s)</td>
-                <td class="comments"><?= $articleData['numberOfComments'] ?> commentaire(s)</td>
-                <td class="date">Créé le : <?= date_format($article->getDateCreation(), "d-m-Y") ?></td>
-            </tr>
+        <tr class="monitoringLine">
+            <td class="title"><?= $article->getTitle() ?></td>
+            <td class="vues"><?= $article->getNumberVues() ?> vue(s)</td>
+            <td class="comments"><?= $articleData['numberOfComments'] ?> commentaire(s)</td>
+            <td class="date">Créé le : <?= date_format($article->getDateCreation(), "d-m-Y") ?></td>
+        </tr>
         <?php } ?>
     </tbody>
 </table>

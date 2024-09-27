@@ -120,11 +120,11 @@ class ArticleManager extends AbstractEntityManager
 
     public function getNumberComments(Article $article): int
     {
-        $sql = "SELECT id FROM comment WHERE id_article = :id_article";
+        $sql = "SELECT COUNT(id) as number_of_comments FROM comment WHERE id_article = :id_article";
         $result = $this->db->query($sql, [
             'id_article' => $article->getId()
         ]);
-        $data = $result->fetchAll();
-        return count($data);
+        $data = $result->fetch();
+        return $data['number_of_comments'];
     }
 }
